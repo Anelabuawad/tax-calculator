@@ -14,4 +14,4 @@ the command will Run the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 
-For any further questions, please do not hesitate contacting me. 
+For any further questions, please feel free to contacting me. 
