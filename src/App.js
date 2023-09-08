@@ -10,49 +10,49 @@ const itemsData = [
         "name": "Book",
         "price": 12.49,
         "isImported": false,
-        "Category": "books"
+        "category": "books"
     },
     {
         "id": 2,
         "name": "Music CD",
         "price": 14.99,
         "isImported": false,
-        "Category": "entertainment"
+        "category": "entertainment"
     },
     {
         "id": 3,
         "name": "box of Chocolate",
         "price": 0.85,
         "isImported": false,
-        "Category": "food"
+        "category": "food"
     },
     {
         "id": 4,
         "name": "box of Chocolate",
         "price": 10,
         "isImported": true,
-        "Category": "food"
+        "category": "food"
     },
     {
         "id": 5,
         "name": "bottle of perfume",
         "price": 47.50,
         "isImported": true,
-        "Category": "perfume"
+        "category": "perfume"
     },
     {
         "id": 6,
         "name": "bottle of perfume",
         "price": 18.99,
         "isImported": false,
-        "Category": "perfume"
+        "category": "perfume"
     },
     {
         "id": 7,
         "name": "packet of headache pills",
-        "price": 9.75,
+        "price": 10,
         "isImported": false,
-        "Category": "medical"
+        "category": "medical"
     }
 ]
 
@@ -60,8 +60,7 @@ const itemsData = [
 
 function App() {
     const [items, setItems] = useState(itemsData);
-    const [selectedItems, setSelectedItems] = useState([]);
-
+    const [itemsCount,setItemsCount]=useState({});
     return (
         <main>
             <div className='main'>
@@ -70,8 +69,12 @@ function App() {
             <div className="app  mt-8  gap-y-10">
                 <h1 className="head_text">Sales Tax Calculator</h1>
                 <p className="text-gray-600 ">Select items to calculate sales tax and generate a receipt.</p>
-            <ItemsList items={items} setItems={setItems} setSelectedItems={setSelectedItems} selectedItems={selectedItems}/>
-            <Receipt selectedItems={selectedItems}/>
+            <ItemsList items={items}
+                       setItems={setItems}
+                       itemsCount={itemsCount}
+                       setItemsCount={setItemsCount}
+            />
+            <Receipt items={items} itemsCount={itemsCount}/>
             </div>
         </main>
   );
