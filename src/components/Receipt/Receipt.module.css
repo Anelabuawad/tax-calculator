@@ -1,0 +1,12 @@
+.mainDiv{
+    @apply my-8 flex flex-col border-2 p-14 w-1/2 min-w-fit ;
+}
+
+h2{
+    @apply  mb-5 text-2xl text-center font-bold text-gray-600 uppercase;
+}
+
+hr{
+    @apply border-2 border-gray-600;
+}
+

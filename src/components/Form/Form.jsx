@@ -19,7 +19,6 @@ export default function Form({items, setItems, setShowAddDiv}) {
     };
     const handleSubmit = (e) => {
         e.preventDefault();
-
         const newItem = {
             id: items.length + 1,
             name: formValues.name,
@@ -72,7 +71,7 @@ export default function Form({items, setItems, setShowAddDiv}) {
                                onChange={(e) => handleInputChange(e)}
                                value={formValues.category}
                                className={styles.inputField}
-                               placeholder="food" required/>
+                               placeholder="food, books, medical ..." required/>
                     </div>
                     <div className="flex items-start mb-6 my-auto">
                         <div className="flex items-center h-5">
@@ -84,7 +83,7 @@ export default function Form({items, setItems, setShowAddDiv}) {
                             />
                         </div>
                         <label htmlFor="isImported"
-                               className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Imported
+                               className={styles.isImportedLabel}>Imported
                             Item <span
                                 className={'text-gray-400'}>(check if the item is imported)</span></label>
                     </div>

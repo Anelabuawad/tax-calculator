@@ -1,3 +1,4 @@
+import styles from "./Receipt.module.css"
 
 export default function Receipt({items, itemsCount}) {
     const ItemsKeys = Object.keys(itemsCount);
@@ -17,39 +18,36 @@ export default function Receipt({items, itemsCount}) {
         }
     });
     const calculateSalesTax = (item) => {
-        const basicTaxRate = 10; // 10% basic sales tax
-        const importTaxRate = 5; // 5% import duty
+        const basicTaxRate = 10; // 10%
+        const importTaxRate = 5; // 5%
         const roundingFactor = 0.05; // Rounding to the nearest 0.05
         let salesTax = 0;
 
-        // Check if the item is exempt from basic sales tax
         const isExempt = item.category === 'books' || item.category === 'food' || item.category === 'medical';
 
         if (!isExempt) {
-            salesTax += (basicTaxRate * (item.qty*item.price)) / 100;
+            salesTax += (basicTaxRate * (item.qty * item.price)) / 100;
         }
 
         if (item.isImported) {
-            salesTax += (importTaxRate * (item.qty*item.price)) / 100;
+            salesTax += (importTaxRate * (item.qty * item.price)) / 100;
         }
 
         salesTax = Math.ceil(salesTax / roundingFactor) * roundingFactor;
         return salesTax
     };
 
-    const totalPrice = selectedItems.reduce((total, item) => total + (item.price*item.qty), 0);
+    const totalPrice = selectedItems.reduce((total, item) => total + (item.price * item.qty), 0);
     let totalSalesTax = 0;
 
     return (
-        <div className="my-8 flex flex-col border-2 p-14 min-w-1/2">
-            <h2 className="mb-5 text-2xl text-center font-bold text-gray-600 uppercase">Receipt</h2>
-            <hr className={'border-1.5 border-gray-600'}/>
+        <div className={styles.mainDiv}>
+            <h2>Receipt</h2>
+            <hr/>
             <ul>
                 {selectedItems.map((item, index) => {
-                    const salesTax =  calculateSalesTax(item);
+                    const salesTax = calculateSalesTax(item);
                     totalSalesTax += salesTax;
-
-                    // Calculate the item price including tax
                     const itemPriceWithTax = (item.price + salesTax);
                     return (
                         <li key={index} className={"my-2"}>

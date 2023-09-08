@@ -3,7 +3,7 @@ import {useState} from "react";
 import ItemsList from "./components/ItemsList/ItemsList";
 import Receipt from "./components/Receipt/Receipt";
 
-
+//mock data
 const itemsData = [
     {
         "id": 1,
@@ -56,28 +56,29 @@ const itemsData = [
     }
 ]
 
-
-
 function App() {
     const [items, setItems] = useState(itemsData);
-    const [itemsCount,setItemsCount]=useState({});
+    const [itemsCount, setItemsCount] = useState({});
     return (
         <main>
             <div className='main'>
-                <div className='gradient' />
+                <div className='gradient'/>
             </div>
             <div className="app  mt-8  gap-y-10">
                 <h1 className="head_text">Sales Tax Calculator</h1>
-                <p className="text-gray-600 ">Select items to calculate sales tax and generate a receipt.</p>
-            <ItemsList items={items}
-                       setItems={setItems}
-                       itemsCount={itemsCount}
-                       setItemsCount={setItemsCount}
-            />
-            <Receipt items={items} itemsCount={itemsCount}/>
+                <p className="text-gray-600 text-center">
+                    Select items to calculate sales tax and generate a
+                    receipt.<br/>
+                    if it's not listed, you can add it too! </p>
+                <ItemsList items={items}
+                           setItems={setItems}
+                           itemsCount={itemsCount}
+                           setItemsCount={setItemsCount}
+                />
+                <Receipt items={items} itemsCount={itemsCount}/>
             </div>
         </main>
-  );
+    );
 }
 
 export default App;
